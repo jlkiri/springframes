@@ -57,12 +57,6 @@ export function createSpringAnimation({
   let frames_below_threshold = 0;
   let largest_displ;
 
-  if (reverse) {
-    keyframes.push({
-      transform: `translate(0px, 0px) rotate(0deg) scale(1)`,
-    });
-  }
-
   for (let step = 0; step <= 1000; step += 1) {
     let Fspring_x = k * (x - spring_length);
     let Fspring_y = k * (y - spring_length);
@@ -126,7 +120,15 @@ export function createSpringAnimation({
     });
   }
 
+  const finalKeyframes = reverse ? keyframes.reverse() : keyframes;
+
+  if (reverse) {
+    keyframes.unshift({
+      transform: `translate(0px, 0px) rotate(0deg) scale(1)`,
+    });
+  }
+
   console.debug(`Generated ${frames} frames`);
 
-  return { keyframes: reverse ? keyframes.reverse() : keyframes, frames };
+  return { keyframes: finalKeyframes, frames };
 }
