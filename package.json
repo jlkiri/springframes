@@ -6,13 +6,23 @@
   "source": "src/index.ts",
   "unpkg": "lib/springframes.umd.js",
   "module": "lib/springframes.module.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "build": "microbundle -o lib",
     "dev": "microbundle watch"
   },
+  "keywords": [
+    "animation",
+    "transition",
+    "spring",
+    "css"
+  ],
   "repository": "https://github.com/jlkiri/springframes",
   "author": "Kirill Vasiltsov (@jlkiri)",
   "license": "MIT",
+  "files": [
+    "lib/**/*"
+  ],
   "devDependencies": {
     "microbundle": "^0.12.3"
   }
