@@ -36,7 +36,7 @@ export function createSpringAnimation({
   let velocity_x = 0;
   let velocity_y = 0;
 
-  let positions = [];
+  let keyframes = [];
 
   let frames = 0;
   let frames_below_threshold = 0;
@@ -57,7 +57,7 @@ export function createSpringAnimation({
     x += velocity_x * frame_rate;
     y += velocity_y * frame_rate;
 
-    positions.push({
+    keyframes.push({
       transform: `translate(${x}px, ${y}px)`,
     });
 
@@ -91,5 +91,5 @@ export function createSpringAnimation({
 
   console.debug(`Generated ${frames} frames`);
 
-  return { positions: reverse ? positions.reverse() : positions, frames };
+  return { keyframes: reverse ? keyframes.reverse() : keyframes, frames };
 }
