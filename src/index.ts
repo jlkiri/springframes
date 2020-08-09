@@ -17,6 +17,11 @@ export type SpringParameters = {
   mass?: number;
 };
 
+export type SpringFrames = {
+  keyframes: Keyframe[];
+  frames: number;
+};
+
 export function createSpringAnimation({
   dx,
   dy,
@@ -24,7 +29,9 @@ export function createSpringAnimation({
   stiffness = 500,
   damping = 50,
   mass = 1,
-}: SpringParameters) {
+}: SpringParameters): SpringFrames {
+  if (dx === 0 && dy === 0) return { keyframes: [], frames: 0 };
+
   const spring_length = 1;
   const k = -stiffness;
   const d = -damping;
