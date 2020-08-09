@@ -13,10 +13,12 @@ A spring physics based keyframe generator to be used with Web Animation API. Fas
 | :---------: | :-----: | :------: | :-------: | :-----------------------: |
 |    `dx`     |    -    |  `true`  | `number`  |  Displacement on X axis   |
 |    `dy`     |    -    |  `true`  | `number`  |  Displacement on Y axis   |
-|  `reverse`  |  false  | `false`  | `boolean` | Revert order of keyframes |
-| `stiffness` |   500   | `false`  | `number`  |     Spring stiffness      |
-|  `damping`  |   50    | `false`  | `number`  |   Spring damping ratio    |
-|   `mass`    |    1    | `false`  | `number`  |        Spring mass        |
+|    `deg`    |   `0`   | `false`  | `number`  |    Rotation (degrees)     |
+|   `scale`   |   `1`   | `false`  | `number`  |           Scale           |
+|  `reverse`  | `false` | `false`  | `boolean` | Revert order of keyframes |
+| `stiffness` |  `500`  | `false`  | `number`  |     Spring stiffness      |
+|  `damping`  |  `50`   | `false`  | `number`  |   Spring damping ratio    |
+|   `mass`    |   `1`   | `false`  | `number`  |        Spring mass        |
 
 ## Usage
 
