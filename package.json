@@ -1,6 +1,6 @@
 {
   "name": "springframes",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "A spring physics based keyframe generator",
   "main": "springframes.js",
   "source": "src/index.ts",
