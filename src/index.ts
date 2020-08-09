@@ -89,7 +89,9 @@ export function createSpringAnimation({
     s += velocity_s * frame_rate;
 
     keyframes.push({
-      transform: `translate(${x}px, ${y}px) rotate(${r}deg) scale(${s + 1})`,
+      transform: `translate(${x}px, ${y}px) rotate(${r}deg) scale(${
+        s / scale + 1
+      })`,
     });
 
     // Save the last largest displacement so that we can compare it with threshold later
