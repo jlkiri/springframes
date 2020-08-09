@@ -11,8 +11,8 @@ const DISPL_THRESHOLD = 2;
 export type SpringParameters = {
   dx: number;
   dy: number;
-  deg: number;
-  scale: number;
+  deg?: number;
+  scale?: number;
   reverse?: boolean;
   stiffness?: number;
   damping?: number;
