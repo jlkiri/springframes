@@ -2,7 +2,14 @@
   "name": "springframes",
   "version": "0.1.0",
   "description": "A spring physics based keyframe generator",
-  "main": "index.js",
+  "main": "springframes.js",
+  "source": "src/index.ts",
+  "unpkg": "lib/springframes.umd.js",
+  "module": "lib/springframes.module.js",
+  "scripts": {
+    "build": "microbundle -o lib",
+    "dev": "microbundle watch"
+  },
   "repository": "https://github.com/jlkiri/springframes",
   "author": "Kirill Vasiltsov (@jlkiri)",
   "license": "MIT",

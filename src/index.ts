@@ -7,14 +7,24 @@ const DISPL_THRESHOLD = 3;
   Calculate next speed from acceleration: v2 = v1 + a * t
   Calculate next position from previous position and speed: p2 = p1 + v * t
 */
+
+export type SpringParameters = {
+  dx: number;
+  dy: number;
+  reverse?: boolean;
+  stiffness?: number;
+  damping?: number;
+  mass?: number;
+};
+
 export function createSpringAnimation({
   dx,
   dy,
-  reverse,
+  reverse = false,
   stiffness = 500,
   damping = 50,
   mass = 1,
-}) {
+}: SpringParameters) {
   const spring_length = 1;
   const k = -stiffness;
   const d = -damping;
@@ -51,11 +61,13 @@ export function createSpringAnimation({
       transform: `translate(${x}px, ${y}px)`,
     });
 
+    const xy = Math.sqrt(x ** 2 + y ** 2);
+
     // Save the last largest displacement so that we can compare it with threshold later
     largest_displ =
       largest_displ < 0
-        ? Math.max(largest_displ || -Infinity, x)
-        : Math.min(largest_displ || Infinity, x);
+        ? Math.max(largest_displ || -Infinity, xy)
+        : Math.min(largest_displ || Infinity, xy);
 
     if (Math.abs(largest_displ) < DISPL_THRESHOLD) {
       frames_below_threshold += 1;
