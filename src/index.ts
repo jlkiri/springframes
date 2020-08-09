@@ -43,13 +43,13 @@ export function createSpringAnimation({
 
   let x = dx;
   let y = dy;
-  let ddeg = deg;
+  let r = deg;
   let s = scale - 1;
 
   let velocity_x = 0;
   let velocity_y = 0;
+  let velocity_r = 0;
   let velocity_s = 0;
-  let velocity_deg = 0;
 
   let keyframes = [];
 
@@ -66,39 +66,37 @@ export function createSpringAnimation({
   for (let step = 0; step <= 1000; step += 1) {
     let Fspring_x = k * (x - spring_length);
     let Fspring_y = k * (y - spring_length);
-    let Fspring_deg = k * (ddeg - spring_length);
-    let Fspring_s = k * (scale - spring_length);
+    let Fspring_r = k * (r - spring_length);
+    let Fspring_s = k * (s - spring_length);
     let Fdamping_x = d * velocity_x;
     let Fdamping_y = d * velocity_y;
-    let Fdamping_deg = d * velocity_deg;
+    let Fdamping_r = d * velocity_r;
     let Fdamping_s = d * velocity_s;
 
     let accel_x = (Fspring_x + Fdamping_x) / mass;
     let accel_y = (Fspring_y + Fdamping_y) / mass;
-    let accel_deg = (Fspring_deg + Fdamping_deg) / mass;
+    let accel_r = (Fspring_r + Fdamping_r) / mass;
     let accel_s = (Fspring_s + Fdamping_s) / mass;
 
     velocity_x += accel_x * frame_rate;
     velocity_y += accel_y * frame_rate;
-    velocity_deg += accel_deg * frame_rate;
+    velocity_r += accel_r * frame_rate;
     velocity_s += accel_s * frame_rate;
 
     x += velocity_x * frame_rate;
     y += velocity_y * frame_rate;
-    ddeg += velocity_deg * frame_rate;
+    r += velocity_r * frame_rate;
     s += velocity_s * frame_rate;
 
     keyframes.push({
-      transform: `translate(${x}px, ${y}px) rotate(${ddeg}deg) scale(${s})`,
+      transform: `translate(${x}px, ${y}px) rotate(${r}deg) scale(${s + 1})`,
     });
-
-    const xy = Math.sqrt(x ** 2 + y ** 2);
 
     // Save the last largest displacement so that we can compare it with threshold later
     largest_displ =
       largest_displ < 0
-        ? Math.max(largest_displ || -Infinity, xy)
-        : Math.min(largest_displ || Infinity, xy);
+        ? Math.max(largest_displ || -Infinity, Math.sqrt(x ** 2 + y ** 2))
+        : Math.min(largest_displ || Infinity, Math.sqrt(x ** 2 + y ** 2));
 
     if (Math.abs(largest_displ) < DISPL_THRESHOLD) {
       frames_below_threshold += 1;
