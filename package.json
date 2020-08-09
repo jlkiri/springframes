@@ -1,0 +1,12 @@
+{
+  "name": "springframes",
+  "version": "0.1.0",
+  "description": "A spring physics based keyframe generator",
+  "main": "index.js",
+  "repository": "https://github.com/jlkiri/springframes",
+  "author": "Kirill Vasiltsov (@jlkiri)",
+  "license": "MIT",
+  "devDependencies": {
+    "microbundle": "^0.12.3"
+  }
+}
