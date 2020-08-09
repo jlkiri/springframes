@@ -89,7 +89,7 @@ export function createSpringAnimation({
     s += velocity_s * frame_rate;
 
     keyframes.push({
-      transform: `translate(${x}px, ${y}px) rotate(${ddeg}ddeg) scale(${s})`,
+      transform: `translate(${x}px, ${y}px) rotate(${ddeg}deg) scale(${s})`,
     });
 
     const xy = Math.sqrt(x ** 2 + y ** 2);
